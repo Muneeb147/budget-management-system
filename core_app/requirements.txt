@@ -1,0 +1,13 @@
+# Kept dependencies version locked to avoid any breaking changes.
+# We should upgrade manually after verification (May be use dependabot or similar tool in GH).
+
+Django==4.2.7
+celery==5.3.6
+redis==5.0.1
+psycopg2-binary==2.9.9
+mypy==1.10.0
+django-stubs==4.2.7
+types-redis==4.6.0.20240417
+black==24.4.2
+flake8==7.0.0
+isort==5.13.2
