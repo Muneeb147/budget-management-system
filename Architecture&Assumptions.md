@@ -6,7 +6,7 @@
 
 | Component         | Technology                 |
 |------------------|----------------------------|
-| Web Framework     | Django 5.2                 |
+| Web Framework     | Django                     |
 | Background Jobs   | Celery + Celery Beat       |
 | Database          | PostgreSQL                 |
 | Task Queue        | Redis                      |
