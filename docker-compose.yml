@@ -3,21 +3,61 @@ version: "3.9"
 services:
   postgres:
     image: postgres:15
-    restart: always
-    environment:
-      POSTGRES_DB: budget_db
-      POSTGRES_USER: budget_user
-      POSTGRES_PASSWORD: budget_pass
+    env_file:
+      - .env
     volumes:
-      - data:/var/lib/postgresql/data
+      - postgres_data:/var/lib/postgresql/data
     ports:
       - "5432:5432"
 
   redis:
     image: redis:7
-    restart: always
     ports:
       - "6379:6379"
 
+  web:
+    build:
+      context: .
+    command: >
+      sh -c "
+      python manage.py migrate &&
+      python manage.py runserver 0.0.0.0:8000
+      "
+    volumes:
+      - .:/app
+    ports:
+      - "8000:8000"
+    env_file:
+      - .env
+    depends_on:
+      - postgres
+      - redis
+
+  celery:
+    build:
+      context: .
+    command: celery -A budget_management_system worker --loglevel=info
+    volumes:
+      - .:/app
+    env_file:
+      - .env
+    depends_on:
+      - web
+      - redis
+      - postgres
+
+  beat:
+    build:
+      context: .
+    command: celery -A budget_management_system beat --loglevel=info --scheduler django_celery_beat.schedulers:DatabaseScheduler
+    volumes:
+      - .:/app
+    env_file:
+      - .env
+    depends_on:
+      - web
+      - redis
+      - postgres
+
 volumes:
-  data:
+  postgres_data:

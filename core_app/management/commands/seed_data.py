@@ -86,3 +86,7 @@ class Command(BaseCommand):
         self.stdout.write(
             self.style.SUCCESS("Seeded brands, campaigns, and schedules.")
         )
+
+
+# Example command
+# python manage.py seed_data --brands=2 --campaigns=10 --spend-days=7 --daily-budget=75 --monthly-budget=1500

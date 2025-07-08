@@ -2,7 +2,7 @@ import logging
 import pytz
 from datetime import date, datetime
 
-from models import Campaign, Spend, Campaign, DaypartingSchedule
+from core_app.models import Campaign, Spend, Campaign, DaypartingSchedule
 
 logger = logging.getLogger(__name__)
 
