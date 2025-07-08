@@ -14,3 +14,7 @@ isort==5.13.2
 python-decouple==3.8
 pytz==2025.2
 django-celery-beat==2.6.0
+
+# For tests
+pytest
+pytest-django

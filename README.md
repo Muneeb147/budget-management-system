@@ -40,10 +40,23 @@ make migrate       # Run migrations
 make run           # Run Django dev server
 make format        # Format code with black
 make lint          # Lint using flake8
+make test          # Run Tests
 ...
 ```
 
 ---
+
+
+## 🧪 Run Tasks Tests
+
+Create demo brands, campaigns, spends, and dayparting schedules:
+
+```bash
+make test 
+OR
+docker-compose exec web pytest --ds=budget_management_system.settings
+```
+
 
 ## 🧪 Seed the Database
 

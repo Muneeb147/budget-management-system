@@ -45,3 +45,7 @@ format:
 .PHONY: lint
 lint:
 	flake8 core_app
+
+.PHONY: test
+test:
+	docker-compose exec web pytest --ds=budget_management_system.settings
