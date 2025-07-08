@@ -106,7 +106,7 @@ class DaypartingSchedule(models.Model):
     end_time: time = models.TimeField()
     timezone: str = models.CharField(
         max_length=64, default="UTC"
-    )  # optional if all in UTC
+    )  # not needed (if all in UTC)
 
     def __str__(self) -> str:
         return f"{self.campaign.name} - {self.day_of_week}: {self.start_time}-{self.end_time}"

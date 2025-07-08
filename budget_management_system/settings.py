@@ -83,6 +83,18 @@ CELERY_BEAT_SCHEDULE = {
         "task": "core_app.tasks.check_all_campaign_budgets",
         "schedule": crontab(minute="*/10"),  # every 10 minute
     },
+    "reactivate-daily-campaigns": {
+        "task": "core_app.tasks.reactivate_daily_campaigns",
+        "schedule": crontab(minute=5, hour=0),
+    },
+    "reactivate-monthly-campaigns": {
+        "task": "core_app.tasks.reactivate_monthly_campaigns",
+        "schedule": crontab(minute=10, hour=0, day_of_month=1),
+    },
+    "enforce-dayparting-every-15-min": {
+        "task": "core_app.tasks.enforce_dayparting",
+        "schedule": crontab(minute="*/15"),
+    },
 }
 
 
