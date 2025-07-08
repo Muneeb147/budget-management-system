@@ -9,13 +9,10 @@ setup-venv:
 	python3 -m venv venv
 	pip install -r requirements.txt
 
+
 .PHONY: run
 run:
 	python manage.py runserver
-
-.PHONY: shell
-shell:
-	python manage.py shell
 
 
 .PHONY: migrate
@@ -23,9 +20,6 @@ migrate:
 	python manage.py makemigrations
 	python manage.py migrate
 
-.PHONY: superuser
-superuser:
-	python manage.py createsuperuser
 
 .PHONY: worker
 worker:
@@ -35,11 +29,6 @@ worker:
 .PHONY: beat
 beat:
 	celery -A $(PROJECT) beat --loglevel=info
-
-
-.PHONY: test
-test:
-	python manage.py test
 
 
 .PHONY: typecheck

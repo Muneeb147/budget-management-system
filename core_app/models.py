@@ -55,6 +55,7 @@ class Campaign(models.Model):
 
     is_dayparting_enabled: bool = models.BooleanField(default=False)
 
+    # These fields are kept for tracking and reference. Not directly used;
     created_at: models.DateTimeField = models.DateTimeField(auto_now_add=True)
     updated_at: models.DateTimeField = models.DateTimeField(auto_now=True)
 
@@ -78,7 +79,7 @@ class Spend(models.Model):
     updated_at: models.DateTimeField = models.DateTimeField(auto_now=True)
 
     class Meta:
-        unique_together = ("campaign", "date")  # prevent duplicates
+        unique_together = ("campaign", "date")  # for preventing duplicates. As we can have a new spending every new day
 
     def __str__(self) -> str:
         return f"{self.campaign.name} - {self.date}"
@@ -107,6 +108,3 @@ class DaypartingSchedule(models.Model):
     timezone: str = models.CharField(
         max_length=64, default="UTC"
     )  # not needed (if all in UTC)
-
-    def __str__(self) -> str:
-        return f"{self.campaign.name} - {self.day_of_week}: {self.start_time}-{self.end_time}"
