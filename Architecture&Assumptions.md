@@ -55,7 +55,7 @@
   Runs every start of month to reactivate the campaign if applicable and allowed
 - **`reactivate_daily_campaigns`**:  
   Runs every start of month to reactivate the campaign if applicable and allowed
-- **`enforce_dayparting`**:  
+- **`enforce_dayparting_for_all_campaigns`**:  
   Also scheduled periodically. Pauses or resumes campaigns based on current time vs defined dayparting windows.
 
 ---

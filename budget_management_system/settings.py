@@ -93,7 +93,7 @@ CELERY_BEAT_SCHEDULE = {
         "schedule": crontab(minute=10, hour=0, day_of_month=1),
     },
     "enforce-dayparting-every-15-min": {
-        "task": "core_app.tasks.enforce_dayparting",
+        "task": "core_app.tasks.enforce_dayparting_for_all_campaigns",
         "schedule": crontab(minute="*/15"),
     },
 }
