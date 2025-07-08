@@ -1,6 +1,6 @@
 import logging
 import pytz
-from datetime import date, datetime
+from datetime import date, datetime, timezone
 
 from core_app.models import Campaign, Spend, Campaign, DaypartingSchedule
 
@@ -81,7 +81,7 @@ def enforce_dayparting_for_all_campaigns() -> None:
     campaigns = Campaign.objects.filter(is_dayparting_enabled=True)
 
     for campaign in campaigns:
-        now_utc = datetime.now(datetime.timezone.utc)
+        now_utc = datetime.now(timezone.utc)
 
         today_weekday = now_utc.strftime("%a").upper()[:3]  # e.g., "MON" "TUE" etc..
         schedules: list[DaypartingSchedule] = campaign.dayparting_schedules.filter(
