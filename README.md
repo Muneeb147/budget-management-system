@@ -71,6 +71,13 @@ To connect to the running Postgres container using `psql`:
 docker-compose exec postgres psql -U budget_user -d budget_db
 ```
 
+## ❌ Reset/Clear the Data from Database
+
+```bash
+docker-compose exec web python manage.py purge_seeded_data
+```
+
+
 
 Once inside the interactive shell, you can inspect tables:
 
